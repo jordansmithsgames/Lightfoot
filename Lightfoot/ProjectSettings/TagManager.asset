@@ -50,8 +50,14 @@ TagManager:
   - name: Background2
     uniqueID: 3472676827
     locked: 0
+  - name: Platforms
+    uniqueID: 1254701659
+    locked: 0
   - name: Collidable
     uniqueID: 805850633
+    locked: 0
+  - name: Ground
+    uniqueID: 2438186395
     locked: 0
   - name: Foreground1
     uniqueID: 1689821101
