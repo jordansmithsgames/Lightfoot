@@ -22,11 +22,31 @@ public class ConveyorPanel : MonoBehaviour
 
         if (transform.position.x >= transform.parent.position.x + length && right)
         {
+            Transform player = null;
+            try
+            {
+                player = transform.GetChild(0).GetChild(0);
+            }
+            catch (UnityException e){}
+            if (player != null)
+            {
+                player.GetComponent<CharacterController2D>().DetachParent();
+            }
             transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
         }
 
         else if (transform.position.x <= transform.parent.position.x - length)
         {
+            Transform player = null;
+            try
+            {
+                player = transform.GetChild(0).GetChild(0);
+            }
+            catch (UnityException e) { }
+            if (player != null)
+            {
+                player.GetComponent<CharacterController2D>().DetachParent();
+            }
             transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, transform.parent.position.z);
         }
     }
