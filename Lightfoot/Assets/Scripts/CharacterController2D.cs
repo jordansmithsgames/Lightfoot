@@ -32,9 +32,18 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
-	private void Awake()
+    private Transform m_currMovingPlatform;
+
+    private GameObject[] lights;
+    private bool illuminated;
+    List<RaycastHit2D> results = new List<RaycastHit2D>();
+    ContactFilter2D filter = new ContactFilter2D();
+
+    private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+        lights = GameObject.FindGameObjectsWithTag("Light");
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -60,6 +69,16 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
+        //Illumination Detection
+        illuminated = false;
+        
+        foreach (GameObject light in lights)
+        {
+            if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results) < 3)
+                illuminated = true;
+            Debug.DrawLine(this.transform.position, light.transform.position);
+        }
 	}
 
 
@@ -145,4 +164,26 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Moving")
+        {
+            m_currMovingPlatform = coll.gameObject.transform;
+            transform.SetParent(m_currMovingPlatform);
+            Debug.Log("Enter " + coll.gameObject.name);
+        }
+        
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Moving")
+        {
+            m_currMovingPlatform = null;
+            this.transform.parent = null;
+            Debug.Log("Exit " + coll.gameObject.name);
+        }
+        
+    }
 }
