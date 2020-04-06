@@ -18,7 +18,14 @@ public class ConveyorPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(speed * 0.02f, 0, 0));
+        length = transform.parent.GetComponent<Conveyor>().length;
+        speed = transform.parent.GetComponent<Conveyor>().speed;
+        right = transform.parent.GetComponent<Conveyor>().right;
+
+        if (right)
+            transform.Translate(new Vector3(speed * 0.02f, 0, 0));
+        else
+            transform.Translate(new Vector3(speed * -0.02f, 0, 0));
 
         if (transform.position.x >= transform.parent.position.x + length && right)
         {

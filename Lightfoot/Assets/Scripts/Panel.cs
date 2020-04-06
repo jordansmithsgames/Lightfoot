@@ -16,9 +16,12 @@ public class Panel : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(new Vector3(0, speed * 0.02f, 0));
+        if (up)
+            transform.Translate(new Vector3(0, speed * 0.02f, 0));
+        else
+            transform.Translate(new Vector3(0, speed * -0.02f, 0));
 
         if (transform.position.y >= transform.parent.position.y + height && up)
         {
