@@ -105,7 +105,7 @@ MonoBehaviour:
   speed: 1
   elbowRoom: 2
   platforms: 5
-  right: 0
+  right: 1
 --- !u!1 &8783985646624153525
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,4 +255,4 @@ MonoBehaviour:
   - {x: -0.48937917, y: -0.06821656, z: 0}
   m_ShapePathHash: 377447138
   m_Mesh: {fileID: 0}
-  m_InstanceId: -12528
+  m_InstanceId: 21656

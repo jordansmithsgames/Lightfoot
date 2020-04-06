@@ -5,6 +5,8 @@ using UnityEngine;
 public class Dropdown : MonoBehaviour
 {
     private PlatformEffector2D effector;
+    private BoxCollider2D collided;
+
     void Start()
     {
         effector = gameObject.GetComponent<PlatformEffector2D>();
