@@ -79,6 +79,7 @@ public class CharacterController2D : MonoBehaviour
                 illuminated = true;
             Debug.DrawLine(this.transform.position, light.transform.position);
         }
+		//Debug.Log(illuminated);
 	}
 
 
@@ -165,7 +166,7 @@ public class CharacterController2D : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
-    void OnCollisionStay2D(Collision2D coll)
+/*    void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Moving")
         {
@@ -185,7 +186,7 @@ public class CharacterController2D : MonoBehaviour
             Debug.Log("Exit " + coll.gameObject.name);
         }
         
-    }
+    }*/
 
     public void DetachParent()
     {
