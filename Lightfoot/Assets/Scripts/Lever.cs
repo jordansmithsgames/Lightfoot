@@ -19,7 +19,6 @@ public class Lever : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log(triggering);
         if (triggering && Input.GetButtonDown("Interact")) PullLever();
     }
 

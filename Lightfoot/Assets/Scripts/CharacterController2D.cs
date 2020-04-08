@@ -36,6 +36,7 @@ public class CharacterController2D : MonoBehaviour
 
     private GameObject[] lights;
     private bool illuminated;
+    public int illuminationCounter = 0;
     List<RaycastHit2D> results = new List<RaycastHit2D>();
     ContactFilter2D filter = new ContactFilter2D();
 
@@ -79,7 +80,13 @@ public class CharacterController2D : MonoBehaviour
                 illuminated = true;
             Debug.DrawLine(this.transform.position, light.transform.position);
         }
-		//Debug.Log(illuminated);
+
+        if (illuminated && illuminationCounter < 79)
+            illuminationCounter++;
+        else if (illuminationCounter > 0)
+            illuminationCounter--;
+
+        Debug.Log(illuminationCounter);
 	}
 
 
