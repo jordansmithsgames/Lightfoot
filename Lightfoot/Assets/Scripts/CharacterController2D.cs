@@ -77,7 +77,9 @@ public class CharacterController2D : MonoBehaviour
         
         foreach (GameObject light in lights)
         {
-            if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results, Vector2.Distance(light.transform.position, this.transform.position)) < 3 && ((getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2) || (180 - getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2)))
+            if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results, Vector2.Distance(light.transform.position, this.transform.position)) < 3 
+				&& light.GetComponent<Light2D>().intensity > 0 
+				&& ((getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2) || (180 - getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2)))
             {
                 illuminated = true;
             }
