@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -76,8 +77,10 @@ public class CharacterController2D : MonoBehaviour
         
         foreach (GameObject light in lights)
         {
-            if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results) < 3)
+            if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results, Vector2.Distance(light.transform.position, this.transform.position)) < 3 && ((getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2) || (180 - getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2)))
+            {
                 illuminated = true;
+            }
             Debug.DrawLine(this.transform.position, light.transform.position);
         }
 
@@ -85,10 +88,14 @@ public class CharacterController2D : MonoBehaviour
             illuminationCounter++;
         else if (illuminationCounter > 0)
             illuminationCounter--;
-
-        Debug.Log(illuminationCounter);
+        
 	}
 
+    public float getAngle(GameObject light)
+    {
+        float angle = Mathf.Rad2Deg* Mathf.Atan((this.transform.position.y - light.transform.position.y) / (this.transform.position.x - light.transform.position.x)) - light.transform.rotation.z + 90;
+        return angle;
+    }
 
 	public void Move(float move, bool crouch, bool jump)
 	{
