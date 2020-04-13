@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LightMeter : MonoBehaviour
 {
     // Start is called before the first frame update
-    Image img;
+    SpriteRenderer img;
 
     public Sprite meter0;
     public Sprite meter1;
@@ -23,7 +23,7 @@ public class LightMeter : MonoBehaviour
 
     void Start()
     {
-        img = this.gameObject.GetComponent<Image>();
+        img = this.gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
         meter = new Sprite[] { meter0, meter1, meter2, meter3, meter4, meter5, meter6, meter7 };
     }
