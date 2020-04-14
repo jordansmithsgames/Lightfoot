@@ -21,15 +21,24 @@ public class LightMeter : MonoBehaviour
 
     GameObject player;
 
+    private int illumination;
+
     void Start()
     {
         img = this.gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
         meter = new Sprite[] { meter0, meter1, meter2, meter3, meter4, meter5, meter6, meter7 };
     }
+
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
-        img.sprite = meter[player.GetComponent<CharacterController2D>().illuminationCounter  / 10];
+        illumination = player.GetComponent<CharacterController2D>().illuminationCounter / 10;
+        img.sprite = meter[illumination];
+    }
+
+    public int getIllumination()
+    {
+        return illumination;
     }
 }
