@@ -79,10 +79,11 @@ public class CharacterController2D : MonoBehaviour
         {
             if (Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), (light.transform.position - transform.position), filter, results, Vector2.Distance(light.transform.position, this.transform.position)) < 3 
 				&& light.GetComponent<Light2D>().intensity > 0 
-				&& ((getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2) || (180 - getAngle(light) < light.GetComponent<Light2D>().pointLightOuterAngle / 2)))
+				&& ((Mathf.Abs(getAngle(light)) < light.GetComponent<Light2D>().pointLightOuterAngle / 2)))
             {
                 illuminated = true;
             }
+            Debug.Log(light.name + ": " + getAngle(light));
             Debug.DrawLine(this.transform.position, light.transform.position);
         }
 
@@ -95,7 +96,9 @@ public class CharacterController2D : MonoBehaviour
 
     public float getAngle(GameObject light)
     {
-        float angle = Mathf.Rad2Deg* Mathf.Atan((this.transform.position.y - light.transform.position.y) / (this.transform.position.x - light.transform.position.x)) - light.transform.rotation.z + 90;
+        Vector2 direction = this.transform.position - light.transform.position;
+        direction = light.transform.InverseTransformDirection(direction);
+        float angle = Mathf.Rad2Deg* Mathf.Atan2(direction.y, direction.x) - 90;
         return angle;
     }
 
