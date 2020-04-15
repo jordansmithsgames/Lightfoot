@@ -182,29 +182,29 @@ public class CharacterController2D : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
-/*    void OnCollisionStay2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Moving")
-        {
-            m_currMovingPlatform = coll.gameObject.transform;
-            transform.SetParent(m_currMovingPlatform);
-            Debug.Log("Enter " + coll.gameObject.name);
-        }
-        
-    }
+	void OnCollisionStay2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Moving")
+		{
+			m_currMovingPlatform = coll.gameObject.transform;
+			transform.SetParent(m_currMovingPlatform);
+			Debug.Log("Enter " + coll.gameObject.name);
+		}
 
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Moving")
-        {
-            m_currMovingPlatform = null;
-            this.transform.parent = null;
-            Debug.Log("Exit " + coll.gameObject.name);
-        }
-        
-    }*/
+	}
 
-    public void DetachParent()
+	void OnCollisionExit2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Moving")
+		{
+			m_currMovingPlatform = null;
+			this.transform.parent = null;
+			Debug.Log("Exit " + coll.gameObject.name);
+		}
+
+	}
+
+	public void DetachParent()
     {
         m_currMovingPlatform = null;
         this.transform.parent = null;

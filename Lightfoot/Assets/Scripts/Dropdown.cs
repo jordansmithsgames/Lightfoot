@@ -6,6 +6,7 @@ public class Dropdown : MonoBehaviour
 {
     private PlatformEffector2D effector;
     private BoxCollider2D collided;
+    private Collider2D platform;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class Dropdown : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             Flip();
-            Invoke("Flip", 0.5f);
+            Invoke("Flip", 0.3f);
         }
     }
 

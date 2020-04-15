@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class FistSlam : MonoBehaviour
 {
-    public float speed = 10f;
-    public float delta = 5f;
+    public bool smash;
+
+
+    public float speed;
+    public float delta;
 
     private SpriteRenderer sprite;
     private Vector3 initialPosition;
@@ -14,6 +17,7 @@ public class FistSlam : MonoBehaviour
 
     // Start is called at the beginning of the first frame
     void Start() {
+        smash = false;
         sprite = GetComponent<SpriteRenderer>();
         finalPosition = transform.position;
         initialPosition = new Vector3(transform.position.x, transform.position.y + delta, transform.position.z);
@@ -22,21 +26,32 @@ public class FistSlam : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        transform.position = Vector3.MoveTowards(transform.position, finalPosition, speed * Time.deltaTime);
-        if (transform.position == finalPosition) StartCoroutine(FadeTo(sprite, 0f, 1f));
-        if (sprite.color.a == 0f) {
-            transform.position = initialPosition;
-            StartCoroutine(FadeTo(sprite, 1f, 0.1f));
-        }
+        if (smash) smashFist();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    void smashFist()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, finalPosition, speed * Time.deltaTime);
+        if (transform.position == finalPosition)
+        {
+            Color color = sprite.color;
+            color.a = 1f;
+            StartCoroutine(FadeTo(sprite, 0f, 1f));
+        }
+        if (sprite.color.a == 0f)
+        {
+            transform.position = initialPosition;
+            StartCoroutine(FadeTo(sprite, 1f, 0.1f));
+            return;
+        }
+    }
+
     IEnumerator FadeTo(SpriteRenderer sprite, float targetOpacity, float duration)
     {
-
         // Cache the current color of the material, and its initiql opacity.
         Color color = sprite.color;
         float startOpacity = color.a;
