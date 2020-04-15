@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7792250583118119654}
   - component: {fileID: 7792250583118119655}
   - component: {fileID: 7792250583118119652}
+  - component: {fileID: 36802614331557776}
   m_Layer: 0
   m_Name: Right Fist
   m_TagString: Untagged
@@ -145,5 +146,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefa0f8182b74b14b9f38b8eb0a9a325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smash: 0
   speed: 10
   delta: 6
+--- !u!114 &36802614331557776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792250583118119653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000009503d7e54b26e1bddbd7fcce5b3ac94a094e08309bc55391ad9fb86469717f38
+  m_ShapePath:
+  - {x: -0.08381002, y: -0.034879748, z: 0}
+  - {x: -0.064640254, y: -0.0747335, z: 0}
+  - {x: -0.034803208, y: -0.10472847, z: 0}
+  - {x: 0.044982016, y: -0.104964286, z: 0}
+  - {x: 0.06506863, y: -0.08472332, z: 0}
+  - {x: 0.074831285, y: -0.04489458, z: 0}
+  - {x: 0.09570331, y: -0.0048197596, z: 0}
+  - {x: 0.094328254, y: 0.06563426, z: 0}
+  - {x: 0.055862393, y: 0.10492949, z: 0}
+  - {x: -0.034100577, y: 0.10454665, z: 0}
+  - {x: -0.06485487, y: 0.08460317, z: 0}
+  - {x: -0.08453664, y: 0.06517537, z: 0}
+  - {x: -0.09516537, y: 0.034980044, z: 0}
+  - {x: -0.09516537, y: -0.0046362076, z: 0}
+  m_ShapePathHash: 1886513974
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -150180

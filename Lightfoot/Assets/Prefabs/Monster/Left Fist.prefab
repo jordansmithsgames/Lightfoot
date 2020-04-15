@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4518717522698898366}
   - component: {fileID: 4518717522698898365}
   - component: {fileID: 4518717522698898364}
+  - component: {fileID: 414135191563899674}
   m_Layer: 0
   m_Name: Left Fist
   m_TagString: Untagged
@@ -145,5 +146,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefa0f8182b74b14b9f38b8eb0a9a325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smash: 0
   speed: 10
   delta: 6
+--- !u!114 &414135191563899674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4518717522698898363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 094e0830
+  m_ShapePath:
+  - {x: -0.59755, y: -0.66045, z: 0}
+  - {x: 0.59755, y: -0.66045, z: 0}
+  - {x: 0.59755, y: 0.66045, z: 0}
+  - {x: -0.59755, y: 0.66045, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 48396

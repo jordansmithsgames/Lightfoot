@@ -1,56 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO.MemoryMappedFiles;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    
-    private SpriteRenderer sprite;
-    private Vector3 initPos;
-    private Vector3 swayPos;
-    private bool visible;
+    public GameObject player;
+    public LightMeter lightMeter;
+
+    public float eyeSpeed = 1;
+    public float eyeScaleX = 3;
+    public float eyeScaleY = 1;
+    public float fistSpeed = 10f;
+    public float fistDropDistance = 5f;
+
+    private GameObject LeftFist;
+    private GameObject RightFist;
+    private GameObject Eyes;
+
+    private bool awakened;
+
+    private SpriteRenderer eyeSprite;
+    private Vector3 initEyePos;
+    private Vector3 swayEyePos;
     private float countdown;
 
-    public float speed = 1;
-    public float xScale = 1;
-    public float yScale = 1;
-
-    public LightMeter lightMeter;
+    private Vector3 initLFirstPos;
+    private Vector3 initRFistPos;
+    private Vector3 finalLFistPos;
+    private Vector3 finalRFistPos;
 
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        initPos = transform.position;
-        swayPos = initPos;
-        visible = false;
+        LeftFist = gameObject.transform.Find("Left Fist").gameObject;
+        RightFist = gameObject.transform.Find("Right Fist").gameObject;
+        Eyes = gameObject.transform.Find("Eyes").gameObject;
+
+        awakened = false;
+        eyeSprite = Eyes.GetComponent<SpriteRenderer>();
+        initEyePos = transform.position;
+        swayEyePos = initEyePos;
         countdown = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (visible)
+        if (awakened)
         {
-            transform.position = swayPos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * speed) * xScale - Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * speed) * yScale);
-            if (sprite.color.a == 1) StartCoroutine(FadeTo(sprite, 0f, 3f));
-            if (sprite.color.a == 0) StartCoroutine(FadeTo(sprite, 1f, 3f));
+            transform.position = swayEyePos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * eyeSpeed) * eyeScaleX - Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * eyeSpeed) * eyeScaleY);
+            if (eyeSprite.color.a == 1) StartCoroutine(FadeTo(eyeSprite, 0f, 3f));
+            if (eyeSprite.color.a == 0) StartCoroutine(FadeTo(eyeSprite, 1f, 3f));
+
+            if (player.transform.position.x <= 0) LeftFist.GetComponent<FistSlam>().smash = true;
+            else RightFist.GetComponent<FistSlam>().smash = true;
+
             countdown -= Time.deltaTime;
             if (countdown < 0)
             {
-                visible = false;
-                swayPos = initPos;
+                awakened = false;
+                swayEyePos = initEyePos;
             }
         }
         else if (lightMeter.getIllumination() == 7) 
         {
             countdown = 10f;
-            visible = true;
+            awakened = true;
+            LeftFist.GetComponent<FistSlam>().smash = false;
+            RightFist.GetComponent<FistSlam>().smash = false;
         }
     }
 
     IEnumerator FadeTo(SpriteRenderer sprite, float targetOpacity, float duration)
     {
-
         // Cache the current color of the material, and its initiql opacity.
         Color color = sprite.color;
         float startOpacity = color.a;

@@ -207,7 +207,7 @@ public class CharacterController2D : MonoBehaviour
         
     }
 
-    public void DetachParent()
+	public void DetachParent()
     {
         m_currMovingPlatform = null;
         this.transform.parent = null;
