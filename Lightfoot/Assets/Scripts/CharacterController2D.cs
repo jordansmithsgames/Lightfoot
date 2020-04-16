@@ -83,7 +83,6 @@ public class CharacterController2D : MonoBehaviour
             {
                 illuminated = true;
             }
-            Debug.Log(light.name + ": " + getAngle(light));
             Debug.DrawLine(this.transform.position, light.transform.position);
         }
 
@@ -191,7 +190,6 @@ public class CharacterController2D : MonoBehaviour
         {
             m_currMovingPlatform = coll.gameObject.transform;
             transform.SetParent(m_currMovingPlatform);
-            Debug.Log("Enter " + coll.gameObject.name);
         }
         
     }
@@ -202,7 +200,6 @@ public class CharacterController2D : MonoBehaviour
         {
             m_currMovingPlatform = null;
             this.transform.parent = null;
-            Debug.Log("Exit " + coll.gameObject.name);
         }
         
     }
@@ -211,5 +208,10 @@ public class CharacterController2D : MonoBehaviour
     {
         m_currMovingPlatform = null;
         this.transform.parent = null;
+    }
+
+    public bool getGrounded()
+    {
+        return m_Grounded;
     }
 }

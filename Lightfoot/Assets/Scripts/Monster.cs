@@ -19,6 +19,8 @@ public class Monster : MonoBehaviour
     private GameObject Eyes;
 
     private bool awakened;
+    private bool leftSlammed;
+    private bool rightSlammed;
 
     private SpriteRenderer eyeSprite;
     private Vector3 initEyePos;
@@ -40,7 +42,10 @@ public class Monster : MonoBehaviour
         eyeSprite = Eyes.GetComponent<SpriteRenderer>();
         initEyePos = transform.position;
         swayEyePos = initEyePos;
-        countdown = 10f;
+        countdown = 5f;
+
+        leftSlammed = false;
+        rightSlammed = false;
     }
 
     // Update is called once per frame
@@ -52,23 +57,33 @@ public class Monster : MonoBehaviour
             if (eyeSprite.color.a == 1) StartCoroutine(FadeTo(eyeSprite, 0f, 3f));
             if (eyeSprite.color.a == 0) StartCoroutine(FadeTo(eyeSprite, 1f, 3f));
 
-            if (player.transform.position.x <= 0) LeftFist.GetComponent<FistSlam>().smash = true;
-            else RightFist.GetComponent<FistSlam>().smash = true;
+            if (leftSlammed == false && player.GetComponent<CharacterController2D>().getGrounded())
+            {
+                LeftFist.GetComponent<FistSlam>().startSmash();
+                leftSlammed = true;
+            }
+            else if (rightSlammed == false && LeftFist.GetComponent<FistSlam>().smash == false && leftSlammed == true && player.GetComponent<CharacterController2D>().getGrounded())
+            {
+                RightFist.GetComponent<FistSlam>().startSmash();
+                rightSlammed = true;
+            }
 
             countdown -= Time.deltaTime;
             if (countdown < 0)
             {
+                leftSlammed = false;
+                rightSlammed = false;
                 awakened = false;
                 swayEyePos = initEyePos;
             }
         }
         else if (lightMeter.getIllumination() == 7) 
         {
-            countdown = 10f;
+            countdown = 5f;
             awakened = true;
-            LeftFist.GetComponent<FistSlam>().smash = false;
-            RightFist.GetComponent<FistSlam>().smash = false;
         }
+        Debug.Log("Left Slammed: " + leftSlammed);
+        Debug.Log("Right Slammed: " + rightSlammed);
     }
 
     IEnumerator FadeTo(SpriteRenderer sprite, float targetOpacity, float duration)
@@ -96,5 +111,10 @@ public class Monster : MonoBehaviour
             // Wait one frame, and repeat.
             yield return null;
         }
+    }
+
+    public bool getAwakened()
+    {
+        return awakened;
     }
 }

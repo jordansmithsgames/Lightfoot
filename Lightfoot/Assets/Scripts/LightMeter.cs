@@ -17,6 +17,8 @@ public class LightMeter : MonoBehaviour
     public Sprite meter6;
     public Sprite meter7;
 
+    GameObject monster;
+
     Sprite[] meter;
 
     GameObject player;
@@ -25,6 +27,7 @@ public class LightMeter : MonoBehaviour
 
     void Start()
     {
+        monster = GameObject.Find("Monster");
         img = this.gameObject.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
         meter = new Sprite[] { meter0, meter1, meter2, meter3, meter4, meter5, meter6, meter7 };
@@ -34,7 +37,14 @@ public class LightMeter : MonoBehaviour
     void Update() 
     {
         illumination = player.GetComponent<CharacterController2D>().illuminationCounter / 10;
-        img.sprite = meter[illumination];
+        if (monster.GetComponent<Monster>().getAwakened())
+        {
+            img.sprite = meter7;
+        }
+        else
+        {
+            img.sprite = meter[illumination];
+        }
     }
 
     public int getIllumination()

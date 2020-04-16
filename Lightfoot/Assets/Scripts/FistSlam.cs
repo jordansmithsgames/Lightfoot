@@ -7,7 +7,6 @@ public class FistSlam : MonoBehaviour
 {
     public bool smash;
 
-
     public float speed;
     public float delta;
 
@@ -26,11 +25,25 @@ public class FistSlam : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (smash) smashFist();
+        if (smash)
+        {
+            smashFist();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (collision.gameObject.name == "Player")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void startSmash()
+    {
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
+        finalPosition = GameObject.Find("Player").transform.position;
+        transform.position = new Vector2(finalPosition.x, finalPosition.y + delta);
+        smash = true;
     }
 
     void smashFist()
@@ -40,13 +53,12 @@ public class FistSlam : MonoBehaviour
         {
             Color color = sprite.color;
             color.a = 1f;
-            StartCoroutine(FadeTo(sprite, 0f, 1f));
+            StartCoroutine(FadeTo(sprite, 0f, 1.5f));
         }
         if (sprite.color.a == 0f)
         {
             transform.position = initialPosition;
-            StartCoroutine(FadeTo(sprite, 1f, 0.1f));
-            return;
+            smash = false;
         }
     }
 
