@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public GameObject player;
-    public LightMeter lightMeter;
+    private GameObject player;
+    private LightMeter lightMeter;
 
     public float eyeSpeed = 1;
     public float eyeScaleX = 3;
@@ -34,6 +34,9 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
+        lightMeter = GameObject.Find("Light Meter").GetComponent<LightMeter>();
+        player = GameObject.Find("Player");
+
         LeftFist = gameObject.transform.Find("Left Fist").gameObject;
         RightFist = gameObject.transform.Find("Right Fist").gameObject;
         Eyes = gameObject.transform.Find("Eyes").gameObject;
