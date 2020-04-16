@@ -80,11 +80,12 @@ public class Monster : MonoBehaviour
                 swayEyePos = initEyePos;
             }
         }
-        else if (lightMeter.getIllumination() == 7) 
+        else if (lightMeter.getIllumination() == 7)
         {
             countdown = 5f;
             awakened = true;
         }
+        else awakened = false;
         Debug.Log("Left Slammed: " + leftSlammed);
         Debug.Log("Right Slammed: " + rightSlammed);
     }
