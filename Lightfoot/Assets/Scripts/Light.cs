@@ -6,7 +6,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Light : MonoBehaviour
 {
     public Lever lever;
-    public bool lit = true;
+    public bool lit;
+    private bool opposite;
     private Light2D light;
     private float initIntensity;
 
@@ -15,14 +16,18 @@ public class Light : MonoBehaviour
     {
         light = gameObject.GetComponent<Light2D>();
         initIntensity = light.intensity;
+        opposite = !lit;
         if (!lit) light.intensity = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lever.activated) lit = true;
-        else if (!lever.activated) lit = false;
+        if (lever)
+        {
+            if (lever.activated) lit = opposite;
+            else if (!lever.activated) lit = !opposite;
+        }
         if (lit) light.intensity = initIntensity;
         else light.intensity = 0;
     }
