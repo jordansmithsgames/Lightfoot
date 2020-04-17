@@ -87,7 +87,7 @@ public class CharacterController2D : MonoBehaviour
         }
 
         if (illuminated && illuminationCounter < 79)
-            illuminationCounter++;
+            illuminationCounter += 2;
         else if (illuminationCounter > 0)
             illuminationCounter--;
         
@@ -170,6 +170,7 @@ public class CharacterController2D : MonoBehaviour
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+        Debug.Log(m_Grounded);
 	}
 
 
