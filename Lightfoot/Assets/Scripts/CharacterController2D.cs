@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -59,9 +60,12 @@ public class CharacterController2D : MonoBehaviour
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        if  (this.transform.position.y <= -15)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
@@ -170,7 +174,6 @@ public class CharacterController2D : MonoBehaviour
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
-        Debug.Log(m_Grounded);
 	}
 
 

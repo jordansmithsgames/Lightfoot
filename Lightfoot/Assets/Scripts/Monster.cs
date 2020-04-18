@@ -86,8 +86,6 @@ public class Monster : MonoBehaviour
             awakened = true;
         }
         else awakened = false;
-        Debug.Log("Left Slammed: " + leftSlammed);
-        Debug.Log("Right Slammed: " + rightSlammed);
     }
 
     IEnumerator FadeTo(SpriteRenderer sprite, float targetOpacity, float duration)

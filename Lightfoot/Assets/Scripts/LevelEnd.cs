@@ -7,11 +7,12 @@ public class LevelEnd : MonoBehaviour
 {
     public string sceneName;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.name == "Player")
+        if (col.gameObject.name == "Player")
         {
-            SceneManager.LoadScene(sceneName);
+            Debug.Log("bruh");
+            SceneManager.LoadScene("Scenes/" + sceneName);
         }
     }
 }

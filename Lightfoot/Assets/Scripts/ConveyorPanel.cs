@@ -14,9 +14,8 @@ public class ConveyorPanel : MonoBehaviour
         speed = transform.parent.GetComponent<Conveyor>().speed;
         right = transform.parent.GetComponent<Conveyor>().right;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         length = transform.parent.GetComponent<Conveyor>().length;
         speed = transform.parent.GetComponent<Conveyor>().speed;
