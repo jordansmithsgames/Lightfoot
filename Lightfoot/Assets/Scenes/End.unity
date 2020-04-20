@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 501241235}
   - component: {fileID: 501241234}
   m_Layer: 5
-  m_Name: Subtitle
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +198,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501241232}
   m_CullTransparentMesh: 0
+--- !u!1001 &524962370
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5394923561059405037, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_Name
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0134407
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8802205
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.8632812
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394923561059405039, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ecf19e4e1e4f3c4b82540d2a57fd319, type: 3}
 --- !u!1 &583155827
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +279,7 @@ GameObject:
   - component: {fileID: 583155830}
   - component: {fileID: 583155829}
   m_Layer: 5
-  m_Name: Subtitle (1)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 10}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583155829
@@ -287,7 +356,7 @@ GameObject:
   - component: {fileID: 714403291}
   - component: {fileID: 714403290}
   m_Layer: 5
-  m_Name: Subtitle (2)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714403290
@@ -714,7 +783,7 @@ GameObject:
   - component: {fileID: 2144183490}
   - component: {fileID: 2144183489}
   m_Layer: 5
-  m_Name: Subtitle (3)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,7 +805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144183489
@@ -772,7 +841,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Special Thanks to
 
-    Joshua Fox'
+    Joshua Fox
+
+    Grant Bennett (Music)'
 --- !u!222 &2144183490
 CanvasRenderer:
   m_ObjectHideFlags: 0

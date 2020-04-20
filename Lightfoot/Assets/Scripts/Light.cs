@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Light : MonoBehaviour
 {
     public Lever lever;
+    public Button button;
     public bool lit;
     private bool opposite;
     private Light2D light;
@@ -27,6 +28,11 @@ public class Light : MonoBehaviour
         {
             if (lever.activated) lit = opposite;
             else if (!lever.activated) lit = !opposite;
+        }
+        if (button)
+        {
+            if (button.pressed) lit = opposite;
+            else if (!button.pressed) lit = !opposite;
         }
         if (lit) light.intensity = initIntensity;
         else light.intensity = 0;
