@@ -15,6 +15,6 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
-            SceneManager.LoadScene("Scenes/Level 1");
+            SceneManager.LoadScene("Scenes/Level 0");
     }
 }
