@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: e74b3428178ffd04398ceb4f1a98b37c
   - enabled: 1
     path: Assets/Scenes/Level 0.unity
-    guid: 8ad1a4d6ba837954c9bd1e735b36629c
+    guid: b3384232b0a2e4c4c9bd6abfcb86a43c
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: aa0b7c34ef686cf4191252bf01907699
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: cc69ee75981c9d245a01514e46139505
+  - enabled: 0
+    path: Assets/Scenes/Lightfoot Demo Level 1.unity
+    guid: 8ad1a4d6ba837954c9bd1e735b36629c
   m_configObjects: {}
