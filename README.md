@@ -13,3 +13,4 @@ Pay close attention to the lamp's light meter in every level; if it becomes full
 
 ## Acknowledgements
 Art assets used: [Industrial Tileset](https://0x72.itch.io/16x16-industrial-tileset)
+Special thanks to Grant Bennett for the music
